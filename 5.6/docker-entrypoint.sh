@@ -9,7 +9,7 @@ fi
 if [ "$1" = 'mysqld' ]; then
 	# Copy custom settings and fix permissions
 	mkdir -p /opt/my.cnf.d
-	cp /opt/my.cnf.d/*.cnf /etc/my.cnf.d
+	cp /opt/my.cnf.d/*.cnf /etc/my.cnf.d || true
 	chmod -R 644 /etc/my.cnf.d
 
 	# Get config
