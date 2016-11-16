@@ -1,16 +1,10 @@
-FROM oraclelinux:latest
+FROM mysql:5.7
 
-ENV PACKAGE_URL https://repo.mysql.com/yum/mysql-5.7-community/docker/x86_64/mysql-community-server-minimal-5.7.15-1.el7.x86_64.rpm
+MAINTAINER Team Docksal, https://docksal.io
 
-# Install server
-RUN rpmkeys --import http://repo.mysql.com/RPM-GPG-KEY-mysql \
-  && yum install -y $PACKAGE_URL \
-  && rm -rf /var/cache/yum/*
-RUN mkdir /docker-entrypoint-initdb.d
-
-# Customize configuration for Drupal
-RUN echo "!includedir /etc/my.cnf.d/" >> /etc/my.cnf
-COPY drupal.cnf /etc/my.cnf.d/drupal.cnf
+# Docksal settings
+RUN mkdir -p /opt/mysql.conf.d
+COPY default.cnf /opt/mysql.conf.d/default.cnf
 
 VOLUME /var/lib/mysql
 
@@ -19,4 +13,3 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 3306
 CMD ["mysqld"]
-
