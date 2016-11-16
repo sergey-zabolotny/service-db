@@ -1,0 +1,12 @@
+[mysqld]
+# Set innodb as default
+default-storage-engine=InnoDB
+
+innodb_log_buffer_size=32M
+innodb_buffer_pool_size=256M
+innodb_log_file_size=32M
+
+innodb_file_per_table=1
+
+# Max packets
+max_allowed_packet = 128M
