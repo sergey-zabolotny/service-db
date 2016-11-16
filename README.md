@@ -1,5 +1,14 @@
-# About this Repo
+# Database Docker images for Docksal
 
-This is the Git repo for Dockerfiles and scripts for MySQL products, maintained by the MySQL team.
+## MySQL
 
-For bugs and issues, please submit a bug report at bugs.mysql.com under the category “MySQL Package Repos and Docker Images”.
+Docksal MySQL images are derived from stock mysql images.
+
+We add extra configuration (see `default.cnf`) and allow for additional custom configuration to be safely mounted under `/opt/mysql/conf.d/*.cnf`.  
+
+MySQL versions:
+
+- 5.5: `docksal/db:mysql-5.5`
+- 5.6: `docksal/db:mysql-5.6`
+- 5.7: `docksal/db:mysql-5.7`
+- 8.0: `docksal/db:mysql-8.0`
