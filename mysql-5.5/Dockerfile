@@ -8,9 +8,9 @@ RUN rpmkeys --import http://repo.mysql.com/RPM-GPG-KEY-mysql \
   && rm -rf /var/cache/yum/*
 RUN mkdir /docker-entrypoint-initdb.d
 
-# Customize configuration for Drupal
+# Docksal settings
 RUN echo "!includedir /etc/my.cnf.d/" >> /etc/my.cnf
-COPY drupal.cnf /etc/my.cnf.d/drupal.cnf
+COPY default.cnf /etc/my.cnf.d/default.cnf
 
 VOLUME /var/lib/mysql
 
@@ -19,4 +19,3 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 3306
 CMD ["mysqld"]
-
