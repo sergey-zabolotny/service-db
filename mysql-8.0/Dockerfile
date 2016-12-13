@@ -3,8 +3,7 @@ FROM mysql:8.0
 MAINTAINER Team Docksal, https://docksal.io
 
 # Docksal settings
-RUN mkdir -p /opt/mysql.conf.d
-COPY default.cnf /opt/mysql.conf.d/default.cnf
+COPY default.cnf /etc/mysql/conf.d/10-default.cnf
 
 VOLUME /var/lib/mysql
 
