@@ -1,14 +1,13 @@
 # Database Docker images for Docksal
 
-## MySQL
+Docksal MySQL images are derived from the stock `mysql` images from Docker Hub.  
+We include extra settings (see `default.cnf`) and make slight modifications to `docker-entrypoint.sh`.
 
-Docksal MySQL images are derived from stock mysql images.
+This image(s) is part of the [Docksal](http://docksal.io) image library.
 
-We add extra configuration (see `default.cnf`) and allow for additional custom configuration to be safely mounted under `/opt/mysql/conf.d/*.cnf`.  
+## Versions
 
-MySQL versions:
-
-- 5.5: `docksal/db:mysql-5.5`
-- 5.6: `docksal/db:mysql-5.6`
-- 5.7: `docksal/db:mysql-5.7`
-- 8.0: `docksal/db:mysql-8.0`
+- `mysql-5.5`
+- `mysql-5.6`
+- `mysql-5.7`, `latest`
+- `mysql-8.0`
