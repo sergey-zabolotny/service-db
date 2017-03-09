@@ -7,6 +7,9 @@ innodb_buffer_pool_size=256M
 innodb_log_file_size=32M
 
 innodb_file_per_table=1
+
+# See https://github.com/docksal/service-db/pull/1
+innodb_file_format=barracuda
 innodb_large_prefix=1
 
 # Max packets
