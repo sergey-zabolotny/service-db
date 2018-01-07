@@ -1,0 +1,23 @@
+language: generic
+
+services:
+  - docker
+
+env:
+  matrix:
+    - VERSION=mysql-5.5
+    - VERSION=mysql-5.6
+    - VERSION=mysql-5.7
+    - VERSION=mysql-8.0
+
+install:
+  - curl -fsSL get.docksal.io | sh
+  - fin version
+  - fin sysinfo
+
+script:
+  - cd ${VERSION}
+  - make && make test
+
+after_failure:
+  - make logs
