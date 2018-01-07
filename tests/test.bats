@@ -41,9 +41,10 @@ teardown () {
 	[[ $SKIP == 1 ]] && skip
 
 	# Grab variables from the container
-	mysqlVars=$(make mysql-query QUERY='SHOW VARIABLES;')
+	# -s used to supress echoing of the actual make command
+	mysqlVars=$(make -s mysql-query QUERY='SHOW VARIABLES;')
 	# Compare with the expected values
-	# This will trigger an error only when a variable from mysql-variables.txt is missing or modified in $mysqlVars
-	run bash -c "echo \"$mysqlVars\" | diff --changed-group-format='%<' --unchanged-group-format='' mysql-variables.txt -"
+	# This will trigger a diff only when a variable from mysql-variables.txt is missing or modified in $mysqlVars
+	run bash -c "echo '$mysqlVars' | diff --changed-group-format='%<' --unchanged-group-format='' mysql-variables.txt -"
 	[[ "$output" == "" ]]
 }

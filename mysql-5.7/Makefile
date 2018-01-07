@@ -1,6 +1,6 @@
 -include env_make
 
-VERSION ?= mysql-5.7
+VERSION ?= mysql-5.5
 
 REPO = docksal/db
 NAME = docksal-db-$(VERSION)
@@ -36,7 +36,7 @@ exec:
 
 mysql-query:
 	# Usage: make mysql-query QUERY='SHOW DATABASES;'
-	docker exec $(NAME) bash -c 'mysql --host="localhost" --user="root" --password="$(MYSQL_ROOT_PASSWORD)" -e "'"$(QUERY)"'"'
+	docker exec $(NAME) bash -c "mysql --host=localhost --user=root --password=$(MYSQL_ROOT_PASSWORD) -e '$(QUERY)'"
 
 stop:
 	docker stop $(NAME)
@@ -47,7 +47,6 @@ logs:
 clean:
 	docker rm -f $(NAME) >/dev/null 2>&1 || true
 
-release: build
-	make push -e VERSION=$(VERSION)
+release: build push
 
 default: build
