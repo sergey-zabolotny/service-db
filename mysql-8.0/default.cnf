@@ -6,8 +6,9 @@ default-character-set = utf8mb4
 
 [mysqld]
 # Use multi-byte UTF (utf8mb4) encoding by default (supports emojis, Asian symbols, mathematical symbols, etc.)
+# utf8mb4 has become the default character set, with utf8mb4_0900_ai_ci as the default collation in MySQL 8.0.1 and later.
 character_set_server = utf8mb4
-collation_server = utf8mb4_unicode_ci
+collation_server = utf8mb4_0900_ai_ci
 init_connect = 'SET NAMES utf8mb4'
 
 # Set innodb as default
