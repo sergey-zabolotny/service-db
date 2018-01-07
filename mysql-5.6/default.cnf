@@ -12,5 +12,9 @@ innodb_file_per_table=1
 innodb_file_format=barracuda
 innodb_large_prefix=1
 
+# This is only necessary for MySQL5.6
+# https://github.com/docksal/service-db/issues/2
+innodb_log_file_size = 128MB
+
 # Max packets
 max_allowed_packet = 128M
