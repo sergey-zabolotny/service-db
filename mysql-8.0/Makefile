@@ -1,6 +1,6 @@
 -include env_make
 
-VERSION ?= mysql-5.5
+VERSION ?= mysql-8.0
 
 REPO = docksal/db
 NAME = docksal-db-$(VERSION)
