@@ -22,7 +22,7 @@ teardown () {
 
 	### Setup ###
 	make start
-	sleep 15 # TODO: replace with a healthcheck
+	sleep 30 # TODO: replace with a healthcheck
 
 	### Tests ###
 	# MySQL does a restart, so there should be two of these in the logs after a successful start
