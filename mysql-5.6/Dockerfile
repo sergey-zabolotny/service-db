@@ -1,12 +1,12 @@
 FROM mysql:5.6
 
-# Docksal settings
+# MySQL settings
 COPY default.cnf /etc/mysql/conf.d/10-default.cnf
 
-VOLUME /var/lib/mysql
-
-COPY docker-entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
-
-EXPOSE 3306
-CMD ["mysqld"]
+# Add support for init script run under root user at startup
+# Scripts should be placed in the /docker-entrypoint.d/ folder
+COPY docker-entrypoint.d.sh /usr/local/bin/docker-entrypoint.d.sh
+RUN set -xe; \
+	sed -i '/\$(id -u)/ r /usr/local/bin/docker-entrypoint.d.sh' /usr/local/bin/docker-entrypoint.sh
+# Init scripts run under root
+COPY docker-entrypoint.d /docker-entrypoint.d

@@ -22,9 +22,6 @@ test:
 push:
 	docker push $(IMAGE)
 
-shell:
-	docker run --rm --name $(NAME) -it $(PORTS) $(VOLUMES) $(ENV) $(IMAGE) /bin/bash
-
 run:
 	docker run --rm --name $(NAME) -it $(PORTS) $(VOLUMES) $(ENV) $(IMAGE)
 
@@ -32,7 +29,10 @@ start: clean
 	docker run -d --name $(NAME) $(PORTS) $(VOLUMES) $(ENV) $(IMAGE)
 
 exec:
-	docker exec -it $(NAME) /bin/bash
+	docker exec -it $(NAME) $(CMD)
+
+shell:
+	make exec -e CMD=bash
 
 mysql-query:
 	# Usage: make mysql-query QUERY='SHOW DATABASES;'
