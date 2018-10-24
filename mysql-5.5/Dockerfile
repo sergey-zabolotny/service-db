@@ -10,3 +10,6 @@ RUN set -xe; \
 	sed -i '/\$(id -u)/ r /usr/local/bin/docker-entrypoint.d.sh' /usr/local/bin/docker-entrypoint.sh
 # Init scripts run under root
 COPY docker-entrypoint.d /docker-entrypoint.d
+
+# Fix PATH to include MySQL 5.5 binaries
+RUN echo 'PATH=$PATH:/usr/local/mysql/bin:/usr/local/mysql/scripts' >> /etc/profile
