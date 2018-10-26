@@ -1,4 +1,4 @@
-FROM mysql:5.6
+FROM mysql:5.6.41
 
 # Docksal settings
 COPY default.cnf /etc/mysql/conf.d/10-default.cnf
