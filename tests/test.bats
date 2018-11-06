@@ -79,7 +79,6 @@ _healthcheck_wait ()
 
 @test "Default database present" {
 	[[ $SKIP == 1 ]] && skip
-	_healthcheck_wait
 
 	run make mysql-query QUERY='SHOW DATABASES;'
 	[[ "$output" =~ "default" ]]
@@ -87,7 +86,6 @@ _healthcheck_wait ()
 
 @test "Check variables" {
 	[[ $SKIP == 1 ]] && skip
-	_healthcheck_wait
 
 	# Grab variables from the container
 	# -s used to supress echoing of the actual make command
