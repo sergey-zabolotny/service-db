@@ -1,14 +1,16 @@
-FROM mysql:8.0.13
+ARG VERSION
+FROM mysql:${VERSION}
+
+ARG VERSION
+ENV VERSION=${VERSION}
 
 # Docksal settings
-COPY default.cnf /etc/mysql/conf.d/10-default.cnf
+COPY mysql-${VERSION}/default.cnf /etc/mysql/conf.d/10-default.cnf
 
 VOLUME /var/lib/mysql
 
-COPY docker-entrypoint.sh /entrypoint.sh
+COPY docker-entrypoint.d /docker-entrypoint.d
 COPY healthcheck.sh /opt/healthcheck.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 3306
 CMD ["mysqld"]
